@@ -1,0 +1,36 @@
+div.all {
+  margin-top: 10px auto;
+}
+
+header.h2 {
+  padding: 8px 4px;
+  border: 2px solid #ddd;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+header.h2,
+section,
+footer {
+  width: 60%;
+  margin: 0 auto;
+}
+
+section {
+  display: flex;
+  margin: 10px auto;
+}
+
+div.aside {
+  flex: 1;
+  padding: 1rem;
+  &:nth-of-type(1) {
+    border-right: 2px solid #ddd;
+  }
+}
+
+footer {
+  background-color: cornflowerblue;
+  color: white;
+  padding: 0.5rem;
+}
