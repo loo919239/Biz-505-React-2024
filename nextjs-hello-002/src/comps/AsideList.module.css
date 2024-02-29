@@ -1,0 +1,23 @@
+.ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.ul a {
+  display: block;
+  width: 80%;
+  padding: 12px 10px 5px;
+  margin: 10px auto;
+  text-align: right;
+  border-bottom: 3px solid transparent;
+  transition: 0.7s;
+}
+
+.ul a:hover {
+  border-bottom: 3px solid yellow;
+}
+.active {
+  color: blue;
+}

@@ -1,0 +1,13 @@
+ul {
+  list-style: none;
+  padding: 1rem;
+  background-color: rgb(192, 192, 192);
+}
+li {
+  padding: 0.5rem;
+  font-weight: bolder;
+  transition: 0.3s;
+  &:hover {
+    font-size: 1.3rem;
+  }
+}
