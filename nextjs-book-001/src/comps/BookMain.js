@@ -10,7 +10,7 @@ export default () => {
 
   const fetchBooks = async () => {
     try {
-      const response = await fetch("/api/get");
+      const response = await fetch(`/api/get?search=${search}`);
       const books = await response.json();
       setBookList([...books]);
     } catch (error) {

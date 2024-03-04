@@ -8,7 +8,7 @@ const BookList = ({ bookList }) => {
   //   "NodeJS",
   // ];
   const viewList = bookList.map((book) => {
-    return <li>{book}</li>;
+    return <li>{book.title}</li>;
   });
 
   return <aside>{viewList}</aside>;
