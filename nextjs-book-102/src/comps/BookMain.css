@@ -1,0 +1,70 @@
+.book.main {
+  display: flex;
+  gap: 3px;
+  width: 80%;
+  margin: 30px auto;
+  aside {
+    width: calc(50%);
+    /* 화면 폭의 50%에 해당하는 px 값을 계산하여 width 로 설정하기 
+    overflow: hidden 의 설정에서 보여지는 content  를 제한하기 위한 설정
+    */
+    padding: 1rem;
+    background-color: #efefef;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px #dfdfdf;
+  }
+  aside.list {
+    display: flex;
+    flex-direction: column;
+    ul {
+      list-style: none;
+      li {
+        padding: 8px;
+        /* text(content)의 보여지는 모양을 정리 */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &:nth-of-type(odd) {
+          background-color: #ddd;
+        }
+        &:hover {
+          background-color: #ccc;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  aside.detail {
+    flex: 3;
+  }
+}
+
+div.book.search {
+  padding: 10px;
+  text-align: center;
+  input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+    &:focus {
+      border: 1px solid green;
+    }
+    &:hover {
+      background-color: #ddd;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .book.main {
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    aside {
+      width: calc(90%);
+    }
+  }
+}
