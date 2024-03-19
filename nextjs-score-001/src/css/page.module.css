@@ -1,0 +1,55 @@
+.main {
+  display: flex;
+
+  padding: 2rem;
+  /* min-height: 100vh; */
+}
+
+.main section {
+  flex: 1;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #777;
+}
+
+.main section h1 {
+  position: sticky;
+  top: 0;
+  background-color: blueviolet;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0;
+  text-align: center;
+  z-index: 1;
+}
+
+.main section.list {
+  overflow-y: auto;
+  max-height: calc(90vh);
+}
+.main section.list::-webkit-scrollbar {
+  display: none;
+}
+.main section ul {
+  list-style: none;
+}
+.main section ul li {
+  padding: 5px 0;
+  /* border: 1px solid rebeccapurple; */
+  border-bottom: 1px solid #777;
+}
+.main section ul li:hover {
+  background-color: #ddd;
+}
+
+/*Table 세로화면으로 볼때 화면 구성 변경:반응형
+*/
+@media (max-width: 800px) {
+  .main {
+    flex-direction: column;
+  }
+  .main section:nth-of-type(1) {
+    order: 2;
+  }
+}
