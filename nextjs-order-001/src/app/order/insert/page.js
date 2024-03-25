@@ -1,36 +1,37 @@
 "use client";
 import { SelectAll2 } from "@/app/api/order";
 import { useEffect, useState } from "react";
-import css from "@/css/insert.module.css";
+import styles from "@/css/insert.module.css";
 
 const OrderInsert = () => {
-  const [customerList, setCustomerList] = useState();
+  const [customerList, setCustomerList] = useState([]);
 
   useEffect(() => {
     const getCustomerList = async () => {
-      const result = await SelectAll2();
-      setCustomerList([...result]);
+      try {
+        const result = await SelectAll2();
+        setCustomerList([...result]);
+      } catch (error) {
+        console.error("Error fetching customer list:", error);
+      }
     };
     getCustomerList();
   }, []);
 
-  // const viewList = customerList.map((customer) => (
-  //   <li key={customer.c_code}>{customer.c_code}</li>
-  // ));
+  // 주석 처리된 부분 해제
+  const viewList = customerList.map((customer) => (
+    <li key={customer.c_code}>{customer.c_code}</li>
+  ));
 
   return (
-    <section className={css.main}>
+    <section className={styles.main}>
       <h1>주문서 입력</h1>
       <form>
         <div>
           <input placeholder="고객코드" />
           <button>검색</button>
-          {/* <ul className={css.list}>{viewList}</ul> */}
-          <ul>
-            <li>고객코드:C0020</li>
-            <li>고객명:혼길동</li>
-            <li>연락처:010-1111-1111</li>
-          </ul>
+          <ul className={styles.list}>{viewList}</ul>{" "}
+          {/* 주석 해제된 부분 */}
         </div>
         <div>
           <div>
@@ -45,8 +46,8 @@ const OrderInsert = () => {
       </form>
       <div>
         <h3>상품리스트</h3>
-        <table className={css.table}>
-          <tr className={css.tr}>
+        <table className={styles.table}>
+          <tr className={styles.tr}>
             <td>상품코드</td>
             <td>상품명</td>
             <td>주문수량</td>

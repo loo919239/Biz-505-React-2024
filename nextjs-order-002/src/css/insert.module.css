@@ -1,0 +1,25 @@
+.cust_list {
+  list-style: none;
+  background-color: #ccc;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.cust_list li {
+  border-bottom: 2px solid transparent;
+  padding: 8px;
+}
+
+.cust_list li:nth-of-type(odd) {
+  background-color: #eee;
+}
+
+.cust_list li:hover {
+  border-bottom: 2px solid blue;
+  cursor: pointer;
+}
