@@ -13,11 +13,9 @@ import WRITE from "./Write";
 import SPEECH from "./Speech";
 import speechesData from "./speechData";
 const MainHome = () => {
-  const [currentLevel, setCurrentLevel] = useState(1); // 현재 레벨을 상태로 유지합니다.
+  const [currentLevel, setCurrentLevel] = useState(null); // 현재 레벨을 상태로 유지합니다.
 
   const handleLevelClick = (levelNumber) => {
-    alert(levelNumber);
-    console.log(levelNumber);
     setCurrentLevel(levelNumber);
   };
 
@@ -51,7 +49,12 @@ const MainHome = () => {
           <LEVEL onLevelClick={handleLevelClick} />
         </div>
         <WRITE />
-        <SPEECH speeches={speechesData} currentLevel={currentLevel} />
+        {currentLevel !== null && (
+          <SPEECH
+            speeches={speechesData}
+            currentLevel={currentLevel}
+          />
+        )}
       </div>
     </>
   );
