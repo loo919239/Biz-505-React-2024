@@ -43,6 +43,7 @@ const LEVEL = ({ onLevelClick }) => {
                   src={jellyfish}
                   alt="Jellyfish Image"
                   width={250}
+                  priority={true}
                 />
               ) : (
                 <Image
@@ -56,6 +57,7 @@ const LEVEL = ({ onLevelClick }) => {
                   src={question}
                   alt="Question Image"
                   width={250}
+                  priority={true}
                 />
               )}
             </div>
@@ -77,6 +79,7 @@ const LEVEL = ({ onLevelClick }) => {
                   src={smile}
                   alt="Smile Image"
                   width={250}
+                  priority={true}
                 />
               ) : (
                 <Image
@@ -90,6 +93,7 @@ const LEVEL = ({ onLevelClick }) => {
                   src={question}
                   alt="Question Image"
                   width={250}
+                  priority={true}
                 />
               )}
             </div>
@@ -113,6 +117,7 @@ const LEVEL = ({ onLevelClick }) => {
                   src={whale}
                   alt="Whale Image"
                   width={250}
+                  priority={true}
                 />
               ) : (
                 <Image
@@ -126,6 +131,7 @@ const LEVEL = ({ onLevelClick }) => {
                   src={question}
                   alt="Question Image"
                   width={250}
+                  priority={true}
                 />
               )}
             </div>
@@ -147,6 +153,7 @@ const LEVEL = ({ onLevelClick }) => {
                   src={fish}
                   alt="Fish Image"
                   width={250}
+                  priority={true}
                 />
               ) : (
                 <Image
@@ -160,6 +167,7 @@ const LEVEL = ({ onLevelClick }) => {
                   src={question}
                   alt="Question Image"
                   width={250}
+                  priority={true}
                 />
               )}
             </div>
@@ -173,6 +181,7 @@ const LEVEL = ({ onLevelClick }) => {
             src={completeImg}
             alt="Complete Image"
             width={250}
+            priority={true}
           />
         </div>
       )}
@@ -182,6 +191,7 @@ const LEVEL = ({ onLevelClick }) => {
           src={exMark}
           alt="Exclamation Mark"
           width="100%"
+          priority={true}
         />
       </section>
     </>

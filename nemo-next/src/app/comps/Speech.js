@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 import boy from "@/img/boy.png";
 import "@/css/speech.css";
-import Game1 from "./Game1";
-import Image from "next/image";
 
 const Speech = ({ speeches, currentLevel }) => {
   const [filteredSpeeches, setFilteredSpeeches] = useState([]);
   const [currentSpeechIndex, setCurrentSpeechIndex] = useState(0);
   const [isSpeechVisible, setIsSpeechVisible] = useState(true);
+  const router = useRouter();
 
   const speechContainerRef = useRef(null);
 
@@ -29,14 +30,18 @@ const Speech = ({ speeches, currentLevel }) => {
       setCurrentSpeechIndex((prevIndex) => prevIndex + 1);
     } else {
       setIsSpeechVisible(false);
+      // 대화를 모두 본 후 `/game/[level]`로 이동
+      router.push(`/game${currentLevel}`);
     }
   };
 
   const handleSkip = () => {
     setIsSpeechVisible(false);
+    // 대화를 건너뛴 후 `/game/[level]`로 이동
+    router.push(`/game/${currentLevel}`);
   };
 
-  const handleKeyPress = (event) => {
+  const handleKeyDown = (event) => {
     if (event.key === "Enter" || event.key === "13") {
       event.preventDefault();
       handleNextSpeech();
@@ -49,13 +54,14 @@ const Speech = ({ speeches, currentLevel }) => {
         <div
           className="conversationBox-back"
           tabIndex={0}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyDown}
           ref={speechContainerRef}
         >
           <Image
             src={boy}
             className="avatar"
             alt="A의 아바타"
+            priority={true}
             style={{
               opacity:
                 filteredSpeeches[currentSpeechIndex]?.s_speaker ===

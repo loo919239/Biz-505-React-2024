@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { SelectAll } from "../api/speeches";
 
 import sun from "@/img/sun.png";
 import cloud from "@/img/cloud.png";
@@ -11,10 +12,37 @@ import "@/css/main_screen.css";
 import LEVEL from "./Level";
 import WRITE from "./Write";
 import SPEECH from "./Speech";
-import speechesData from "./speechData";
 import Image from "next/image";
+
 const MainHome = () => {
   const [currentLevel, setCurrentLevel] = useState(null); // 현재 레벨을 상태로 유지합니다.
+  const [speeches, setSpeeches] = useState([]); // 데이터를 저장할 state 추가
+  const [currentDate, setCurrentDate] = useState({
+    year: "",
+    month: "",
+    day: "",
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await SelectAll(); // 모든 데이터 가져오기
+        setSpeeches(data); // 가져온 데이터를 speeches state에 설정
+      } catch (error) {
+        console.error("Error fetching speeches:", error);
+      }
+    };
+
+    fetchData(); // 데이터 가져오기 함수 호출
+  }, []); // 컴포넌트가 마운트될 때 한 번만 호출
+
+  useEffect(() => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작하므로 +1
+    const day = String(date.getDate()).padStart(2, "0");
+    setCurrentDate({ year, month, day });
+  }, []); // 컴포넌트가 마운트될 때 한 번만 호출
 
   const handleLevelClick = (levelNumber) => {
     setCurrentLevel(levelNumber);
@@ -22,27 +50,44 @@ const MainHome = () => {
 
   return (
     <>
-      <div class="HM-home_container">
-        <div class="HM-home_top">
-          <div class="HM-home_first_menu">
-            <div class="HM-home_weather">
+      <div className="HM-home_container">
+        <div className="HM-home_top">
+          <div className="HM-home_first_menu">
+            <div className="HM-home_weather">
               <label>
                 <span>날씨</span>
               </label>
             </div>
-            <div class="HM-home_img">
-              <Image src={sun} alt="sun" width={50} />
-              <Image src={cloud} alt="cloud" width={50} />
-              <Image src={rainy} alt="rainy" width={50} />
-              <Image src={snow} alt="snow" width={50} />
+            <div className="HM-home_img">
+              <Image src={sun} alt="sun" width={50} priority={true} />
+              <Image
+                src={cloud}
+                alt="cloud"
+                width={50}
+                priority={true}
+              />
+              <Image
+                src={rainy}
+                alt="rainy"
+                width={50}
+                priority={true}
+              />
+              <Image
+                src={snow}
+                alt="snow"
+                width={50}
+                priority={true}
+              />
             </div>
             <div>
-              <label class="HM-home_cal">
-                <span>년</span> <span>월</span> <span>일</span>
+              <label className="HM-home_cal">
+                <span>{currentDate.year} 년</span>
+                <span>{currentDate.month} 월</span>
+                <span>{currentDate.day} 일</span>
               </label>
             </div>
           </div>
-          <div class="HM-home_second_menu">
+          <div className="HM-home_second_menu">
             <label>제목 : 수족관을 다녀왔다!</label>
           </div>
         </div>
@@ -51,13 +96,11 @@ const MainHome = () => {
         </div>
         <WRITE />
         {currentLevel !== null && (
-          <SPEECH
-            speeches={speechesData}
-            currentLevel={currentLevel}
-          />
+          <SPEECH speeches={speeches} currentLevel={currentLevel} />
         )}
       </div>
     </>
   );
 };
+
 export default MainHome;

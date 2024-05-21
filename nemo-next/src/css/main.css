@@ -130,6 +130,7 @@ body.HM-main_container {
   label {
     span {
       margin-left: auto;
+      font-size: 20px;
     }
   }
 }
