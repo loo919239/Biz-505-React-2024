@@ -1,5 +1,3 @@
-import React from "react";
-import Image from "next/image";
 import smile from "@/img/smile.png";
 import fish from "@/img/fish.png";
 import jellyfish from "@/img/jellyfish.png";
@@ -8,32 +6,37 @@ import question from "@/img/question.png";
 import completeImg from "@/img/complete_img.png";
 import exMark from "@/img/ex-mark.png";
 
-const LEVEL = ({ clearData, onLevelClick }) => {
+import React from "react";
+import Image from "next/image";
+
+const LEVEL = ({ onLevelClick }) => {
   const handleClick = (levelNumber) => {
     onLevelClick(levelNumber);
   };
 
+  const clear_data1 = { c_clear: 1 }; // 예시 데이터
+  const clear_data2 = { c_clear: 0 }; // 예시 데이터
+  const clear_data3 = { c_clear: 1 }; // 예시 데이터
+  const clear_data4 = { c_clear: 0 }; // 예시 데이터
+  const clear_data5 = { c_clear: 0 }; // 예시 데이터
+
   return (
     <>
-      {clearData.length < 5 || clearData[4].c_clear !== 1 ? (
+      {clear_data5.c_clear !== 1 && (
         <>
           <div>
             <div
               id="LEVEL3"
               className="YS_p_div"
-              onClick={() => handleClick(3)}
+              onClick={() => handleClick(3)} // LEVEL3 이미지를 클릭했을 때 3번 레벨 정보를 전달합니다.
             >
-              {clearData[2] && clearData[2].c_clear === 1 ? (
+              {clear_data3.c_clear === 1 ? (
                 <Image
                   className={`YS_picture_c ${
-                    clearData[0] &&
-                    clearData[0].c_clear === 1 &&
-                    clearData[1] &&
-                    clearData[1].c_clear === 1 &&
-                    clearData[2] &&
-                    clearData[2].c_clear === 1 &&
-                    clearData[3] &&
-                    clearData[3].c_clear !== 1
+                    clear_data1.c_clear === 1 &&
+                    clear_data2.c_clear === 1 &&
+                    clear_data3.c_clear === 1 &&
+                    clear_data4.c_clear !== 1
                       ? "fade-in"
                       : ""
                   }`}
@@ -45,12 +48,9 @@ const LEVEL = ({ clearData, onLevelClick }) => {
               ) : (
                 <Image
                   className={`YS_picture ${
-                    clearData[0] &&
-                    clearData[0].c_clear === 1 &&
-                    clearData[1] &&
-                    clearData[1].c_clear === 1 &&
-                    clearData[3] &&
-                    clearData[3].c_clear !== 1
+                    clear_data1.c_clear === 1 &&
+                    clear_data2.c_clear === 1 &&
+                    clear_data4.c_clear !== 1
                       ? "next_level"
                       : ""
                   }`}
@@ -64,19 +64,15 @@ const LEVEL = ({ clearData, onLevelClick }) => {
             <div
               id="LEVEL1"
               className="YS_p_div"
-              onClick={() => handleClick(1)}
+              onClick={() => handleClick(1)} // LEVEL1 이미지를 클릭했을 때 1번 레벨 정보를 전달합니다.
             >
-              {clearData[0] && clearData[0].c_clear === 1 ? (
+              {clear_data1.c_clear === 1 ? (
                 <Image
                   className={`YS_picture_c ${
-                    clearData[0] &&
-                    clearData[0].c_clear === 1 &&
-                    clearData[1] &&
-                    clearData[1].c_clear !== 1 &&
-                    clearData[2] &&
-                    clearData[2].c_clear !== 1 &&
-                    clearData[3] &&
-                    clearData[3].c_clear !== 1
+                    clear_data1.c_clear === 1 &&
+                    clear_data2.c_clear !== 1 &&
+                    clear_data3.c_clear !== 1 &&
+                    clear_data4.c_clear !== 1
                       ? "fade-in"
                       : ""
                   }`}
@@ -88,12 +84,9 @@ const LEVEL = ({ clearData, onLevelClick }) => {
               ) : (
                 <Image
                   className={`YS_picture ${
-                    clearData[1] &&
-                    clearData[1].c_clear !== 1 &&
-                    clearData[2] &&
-                    clearData[2].c_clear !== 1 &&
-                    clearData[3] &&
-                    clearData[3].c_clear !== 1
+                    clear_data2.c_clear !== 1 &&
+                    clear_data3.c_clear !== 1 &&
+                    clear_data4.c_clear !== 1
                       ? "next_level"
                       : ""
                   }`}
@@ -109,19 +102,15 @@ const LEVEL = ({ clearData, onLevelClick }) => {
             <div
               id="LEVEL4"
               className="YS_p_div"
-              onClick={() => handleClick(4)}
+              onClick={() => handleClick(4)} // LEVEL4 이미지를 클릭했을 때 4번 레벨 정보를 전달합니다.
             >
-              {clearData[3] && clearData[3].c_clear === 1 ? (
+              {clear_data4.c_clear === 1 ? (
                 <Image
                   className={`YS_picture_c ${
-                    clearData[0] &&
-                    clearData[0].c_clear === 1 &&
-                    clearData[1] &&
-                    clearData[1].c_clear === 1 &&
-                    clearData[2] &&
-                    clearData[2].c_clear === 1 &&
-                    clearData[3] &&
-                    clearData[3].c_clear === 1
+                    clear_data1.c_clear === 1 &&
+                    clear_data2.c_clear === 1 &&
+                    clear_data3.c_clear === 1 &&
+                    clear_data4.c_clear === 1
                       ? "fade-in"
                       : ""
                   }`}
@@ -133,12 +122,9 @@ const LEVEL = ({ clearData, onLevelClick }) => {
               ) : (
                 <Image
                   className={`YS_picture ${
-                    clearData[0] &&
-                    clearData[0].c_clear === 1 &&
-                    clearData[1] &&
-                    clearData[1].c_clear === 1 &&
-                    clearData[2] &&
-                    clearData[2].c_clear === 1
+                    clear_data1.c_clear === 1 &&
+                    clear_data2.c_clear === 1 &&
+                    clear_data3.c_clear === 1
                       ? "next_level"
                       : ""
                   }`}
@@ -152,19 +138,15 @@ const LEVEL = ({ clearData, onLevelClick }) => {
             <div
               id="LEVEL2"
               className="YS_p_div"
-              onClick={() => handleClick(2)}
+              onClick={() => handleClick(2)} // LEVEL2 이미지를 클릭했을 때 2번 레벨 정보를 전달합니다.
             >
-              {clearData[1] && clearData[1].c_clear === 1 ? (
+              {clear_data2.c_clear === 1 ? (
                 <Image
                   className={`YS_picture_c ${
-                    clearData[0] &&
-                    clearData[0].c_clear === 1 &&
-                    clearData[1] &&
-                    clearData[1].c_clear === 1 &&
-                    clearData[2] &&
-                    clearData[2].c_clear !== 1 &&
-                    clearData[3] &&
-                    clearData[3].c_clear !== 1
+                    clear_data1.c_clear === 1 &&
+                    clear_data2.c_clear === 1 &&
+                    clear_data3.c_clear !== 1 &&
+                    clear_data4.c_clear !== 1
                       ? "fade-in"
                       : ""
                   }`}
@@ -176,12 +158,9 @@ const LEVEL = ({ clearData, onLevelClick }) => {
               ) : (
                 <Image
                   className={`YS_picture ${
-                    clearData[0] &&
-                    clearData[0].c_clear === 1 &&
-                    clearData[2] &&
-                    clearData[2].c_clear !== 1 &&
-                    clearData[3] &&
-                    clearData[3].c_clear !== 1
+                    clear_data1.c_clear === 1 &&
+                    clear_data3.c_clear !== 1 &&
+                    clear_data4.c_clear !== 1
                       ? "next_level"
                       : ""
                   }`}
@@ -194,7 +173,8 @@ const LEVEL = ({ clearData, onLevelClick }) => {
             </div>
           </div>
         </>
-      ) : (
+      )}
+      {clear_data5.c_clear === 1 && (
         <div className="complete_img_box">
           <Image
             className="YS_picture fade-in"
@@ -216,16 +196,6 @@ const LEVEL = ({ clearData, onLevelClick }) => {
       </section>
     </>
   );
-};
-
-export const getServerSideProps = async () => {
-  const clearData = await Clear_SelectAll();
-
-  return {
-    props: {
-      clearData,
-    },
-  };
 };
 
 export default LEVEL;

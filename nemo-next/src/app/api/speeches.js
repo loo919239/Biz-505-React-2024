@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 const SPEECH = prisma.tbl_speech;
 
-export const SelectAll = async () => {
+export const Speech_SelectAll = async () => {
   const result = await SPEECH.findMany();
   return result;
 };

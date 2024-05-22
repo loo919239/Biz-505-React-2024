@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { SelectAll } from "../api/speeches";
+import { Speech_SelectAll } from "../api/speeches";
+import { Clear_SelectAll } from "../api/clear";
 
 import sun from "@/img/sun.png";
 import cloud from "@/img/cloud.png";
@@ -17,6 +18,7 @@ import Image from "next/image";
 const MainHome = () => {
   const [currentLevel, setCurrentLevel] = useState(null); // 현재 레벨을 상태로 유지합니다.
   const [speeches, setSpeeches] = useState([]); // 데이터를 저장할 state 추가
+  const [clearData, setClearData] = useState([]); // 클리어 데이터를 저장할 상태 추가
   const [currentDate, setCurrentDate] = useState({
     year: "",
     month: "",
@@ -24,9 +26,22 @@ const MainHome = () => {
   });
 
   useEffect(() => {
+    const fetchClearData = async () => {
+      try {
+        const data = await Clear_SelectAll();
+        setClearData(data);
+      } catch (error) {
+        console.error("Error fetching clear data:", error);
+      }
+    };
+
+    fetchClearData();
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await SelectAll(); // 모든 데이터 가져오기
+        const data = await Speech_SelectAll(); // 모든 데이터 가져오기
         setSpeeches(data); // 가져온 데이터를 speeches state에 설정
       } catch (error) {
         console.error("Error fetching speeches:", error);
@@ -92,9 +107,12 @@ const MainHome = () => {
           </div>
         </div>
         <div className="HM-home_picture">
-          <LEVEL onLevelClick={handleLevelClick} />
+          <LEVEL
+            clearData={clearData}
+            onLevelClick={handleLevelClick}
+          />
         </div>
-        <WRITE />
+        <WRITE clearData={clearData} />
         {currentLevel !== null && (
           <SPEECH speeches={speeches} currentLevel={currentLevel} />
         )}
